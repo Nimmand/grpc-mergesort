@@ -17,10 +17,11 @@ namespace RNGesus
 
         public override Task<RngReply> GenerateNumbers(RngRequest request, ServerCallContext context)
         {
+            System.Console.WriteLine($"Called with Count = {request.RngCount}, Max = {request.RngMax}");
             Random rnd = new Random();
             var reply = new RngReply();
-            for(int i = 0; i < request.Count; i++){
-                reply.Numbers.Add(rnd.Next(1, request.Max));
+            for(int i = 0; i < request.RngCount; i++){
+                reply.Numbers.Add(rnd.Next(1, request.RngMax));
             }
             return Task.FromResult(reply);
         }

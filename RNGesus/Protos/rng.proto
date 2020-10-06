@@ -12,8 +12,8 @@ service Rngesus {
 
 // The request message containing the user's name.
 message RngRequest {
-  int32 count = 1;
-  int32 max = 2;
+  int32 rngCount = 1;
+  int32 rngMax = 2;
 }
 
 // The response message containing the greetings.

@@ -31,7 +31,7 @@ namespace RNGesus
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGrpcService<GreeterService>();
+                endpoints.MapGrpcService<RngesusService>();
 
                 endpoints.MapGet("/", async context =>
                 {

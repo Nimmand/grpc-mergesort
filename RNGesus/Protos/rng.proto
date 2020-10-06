@@ -2,20 +2,21 @@ syntax = "proto3";
 
 option csharp_namespace = "RNGesus";
 
-package greet;
+package rng;
 
 // The greeting service definition.
-service Greeter {
+service Rngesus {
   // Sends a greeting
-  rpc SayHello (HelloRequest) returns (HelloReply);
+  rpc GenerateNumbers (RngRequest) returns (RngReply);
 }
 
 // The request message containing the user's name.
-message HelloRequest {
-  string name = 1;
+message RngRequest {
+  int32 count = 1;
+  int32 max = 2;
 }
 
 // The response message containing the greetings.
-message HelloReply {
-  string message = 1;
+message RngReply {
+  repeated int32 numbers = 1;
 }

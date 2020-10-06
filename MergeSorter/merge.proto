@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package merge;
+
+service Mergesorter {
+  rpc Merge (MergeRequest) returns (MergeReply);
+}
+
+// The request message containing the user's name.
+message MergeRequest {
+  repeated int32 numbers = 1;
+}
+
+// The response message containing the greetings.
+message MergeReply {
+  repeated int32 numbers = 1;
+}

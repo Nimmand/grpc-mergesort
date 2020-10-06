@@ -2,10 +2,10 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-import rng_pb2 as rng__pb2
+import merge_pb2 as merge__pb2
 
 
-class RngesusStub(object):
+class MergesorterStub(object):
     """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
@@ -14,42 +14,42 @@ class RngesusStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.GenerateNumbers = channel.unary_unary(
-                '/rng.Rngesus/GenerateNumbers',
-                request_serializer=rng__pb2.RngRequest.SerializeToString,
-                response_deserializer=rng__pb2.RngReply.FromString,
+        self.Merge = channel.unary_unary(
+                '/merge.Mergesorter/Merge',
+                request_serializer=merge__pb2.MergeRequest.SerializeToString,
+                response_deserializer=merge__pb2.MergeReply.FromString,
                 )
 
 
-class RngesusServicer(object):
+class MergesorterServicer(object):
     """Missing associated documentation comment in .proto file."""
 
-    def GenerateNumbers(self, request, context):
+    def Merge(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
 
-def add_RngesusServicer_to_server(servicer, server):
+def add_MergesorterServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'GenerateNumbers': grpc.unary_unary_rpc_method_handler(
-                    servicer.GenerateNumbers,
-                    request_deserializer=rng__pb2.RngRequest.FromString,
-                    response_serializer=rng__pb2.RngReply.SerializeToString,
+            'Merge': grpc.unary_unary_rpc_method_handler(
+                    servicer.Merge,
+                    request_deserializer=merge__pb2.MergeRequest.FromString,
+                    response_serializer=merge__pb2.MergeReply.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'rng.Rngesus', rpc_method_handlers)
+            'merge.Mergesorter', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
  # This class is part of an EXPERIMENTAL API.
-class Rngesus(object):
+class Mergesorter(object):
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def GenerateNumbers(request,
+    def Merge(request,
             target,
             options=(),
             channel_credentials=None,
@@ -59,8 +59,8 @@ class Rngesus(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/rng.Rngesus/GenerateNumbers',
-            rng__pb2.RngRequest.SerializeToString,
-            rng__pb2.RngReply.FromString,
+        return grpc.experimental.unary_unary(request, target, '/merge.Mergesorter/Merge',
+            merge__pb2.MergeRequest.SerializeToString,
+            merge__pb2.MergeReply.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

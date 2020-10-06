@@ -4,19 +4,15 @@ option csharp_namespace = "RNGesus";
 
 package rng;
 
-// The greeting service definition.
 service Rngesus {
-  // Sends a greeting
   rpc GenerateNumbers (RngRequest) returns (RngReply);
 }
 
-// The request message containing the user's name.
 message RngRequest {
   int32 rngCount = 1;
   int32 rngMax = 2;
 }
 
-// The response message containing the greetings.
 message RngReply {
   repeated int32 numbers = 1;
 }
